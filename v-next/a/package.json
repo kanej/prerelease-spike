@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ignored/prerelease-spike-b": "workspace:^1.0.0",
-    "@ignored/prerelease-spike-c": "workspace:^1.0.0"
+    "@ignored/prerelease-spike-b": "workspace:^2.0.0",
+    "@ignored/prerelease-spike-c": "workspace:^2.0.0"
   }
 }
