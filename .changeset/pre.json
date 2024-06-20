@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@ignored/prerelease-spike-a": "2.1.0",
+    "@ignored/prerelease-spike-b": "2.1.0",
+    "@ignored/prerelease-spike-c": "2.1.0",
+    "@ignored/prerelease-spike-d": "2.1.0"
+  },
+  "changesets": []
+}
