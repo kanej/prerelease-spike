@@ -1,0 +1,58 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    devDependencies:
+      changeset:
+        specifier: 0.2.6
+        version: 0.2.6
+
+  packages/a:
+    dependencies:
+      '@ignored/prerelease-spike-b':
+        specifier: workspace:^3.0.0
+        version: link:../b
+      '@ignored/prerelease-spike-c':
+        specifier: workspace:^3.0.0
+        version: link:../c
+
+  packages/b:
+    dependencies:
+      '@ignored/prerelease-spike-d':
+        specifier: workspace:^3.0.0
+        version: link:../d
+
+  packages/c:
+    dependencies:
+      '@ignored/prerelease-spike-d':
+        specifier: workspace:^3.0.0
+        version: link:../d
+
+  packages/d: {}
+
+packages:
+
+  changeset@0.2.6:
+    resolution: {integrity: sha512-d21ym9zLPOKMVhIa8ulJo5IV3QR2NNdK6BWuwg48qJA0XSQaMeDjo1UGThcTn7YDmU08j3UpKyFNvb3zplk8mw==}
+
+  udc@1.0.1:
+    resolution: {integrity: sha512-jv+D9de1flsum5QkFtBdjyppCQAdz9kTck/0xST5Vx48T9LL2BYnw0Iw77dSKDQ9KZ/PS3qPO1vfXHDpLZlxcQ==}
+
+  underscore@1.13.6:
+    resolution: {integrity: sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==}
+
+snapshots:
+
+  changeset@0.2.6:
+    dependencies:
+      udc: 1.0.1
+      underscore: 1.13.6
+
+  udc@1.0.1: {}
+
+  underscore@1.13.6: {}
