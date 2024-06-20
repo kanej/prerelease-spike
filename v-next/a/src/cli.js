@@ -1,3 +1,3 @@
-const a = require("./index");
+import a from "./index.js";
 
 a();

@@ -1,8 +1,8 @@
-const b = require("@ignored/prerelease-spike-b");
-const c = require("@ignored/prerelease-spike-c");
+import b from "@ignored/prerelease-spike-b";
+import c from "@ignored/prerelease-spike-c";
 
-module.exports = function a() {
+export default function a() {
   b();
   c();
   console.log("from a");
-};
+}

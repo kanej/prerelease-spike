@@ -1,6 +1,6 @@
-const d = require("@ignored/prerelease-spike-d");
+import d from "@ignored/prerelease-spike-d";
 
-module.exports = function b() {
+export default function b() {
   d();
   console.log("from b");
-};
+}
