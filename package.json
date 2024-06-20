@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "changeset": "0.2.6"
+    "@changesets/cli": "2.27.5"
   }
 }
