@@ -7,5 +7,7 @@
     "@ignored/prerelease-spike-c": "2.1.0",
     "@ignored/prerelease-spike-d": "2.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "smooth-bugs-run"
+  ]
 }
