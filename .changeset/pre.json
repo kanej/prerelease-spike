@@ -8,6 +8,7 @@
     "@ignored/prerelease-spike-d": "2.1.0"
   },
   "changesets": [
+    "blue-meals-think",
     "eleven-fireants-fix",
     "new-masks-mate",
     "smooth-bugs-run"
