@@ -8,5 +8,5 @@ export default function a() {
 
   b();
   c();
-  console.log("from a with version " + info.version);
+  console.log("from a with version <" + info.version + ">");
 }
