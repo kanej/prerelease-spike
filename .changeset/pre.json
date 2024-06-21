@@ -8,6 +8,7 @@
     "@ignored/prerelease-spike-d": "2.1.0"
   },
   "changesets": [
+    "eleven-fireants-fix",
     "new-masks-mate",
     "smooth-bugs-run"
   ]
