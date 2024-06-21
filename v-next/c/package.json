@@ -1,6 +1,6 @@
 {
   "name": "@ignored/prerelease-spike-c",
-  "version": "2.1.0",
+  "version": "3.0.0-next.0",
   "description": "",
   "main": "src/index.js",
   "type": "module",
@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ignored/prerelease-spike-d": "workspace:^2.1.0"
+    "@ignored/prerelease-spike-d": "workspace:^3.0.0-next.0"
   }
 }
