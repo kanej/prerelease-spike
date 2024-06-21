@@ -4,5 +4,5 @@ export default function d() {
   const localRequire = createRequire(import.meta.url);
   const info = localRequire("../package.json");
 
-  console.log("from d with version " + info.version);
+  console.log("from d with version <" + info.version + ">");
 }
