@@ -1,4 +1,4 @@
-name: Changesets
+name: Changeset Auto Release
 on:
   push:
     branches:
