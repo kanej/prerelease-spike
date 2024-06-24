@@ -42,6 +42,7 @@ jobs:
           fi
 
   release:
+    name: Release
     runs-on: ubuntu-latest
     needs: changesetcheck
     permissions:
