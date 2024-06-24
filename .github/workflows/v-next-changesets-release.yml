@@ -48,5 +48,4 @@ jobs:
       - name: Release check
         env:
           CHANGESETS: ${{needs.changesetcheck.outputs.CHANGESETS}}
-          ANOTHER: "SOMETEXT"
-        run: echo "$CHANGESETS $ANOTHER"
+        run: echo "$CHANGESETS"
