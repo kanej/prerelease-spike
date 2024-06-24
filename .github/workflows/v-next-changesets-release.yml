@@ -52,25 +52,25 @@ jobs:
 
       - name: checkout code repository
         uses: actions/checkout@v4
-        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        if: needs.changesetcheck.outputs.CHANGESETS == 'found'
         with:
           fetch-depth: 0
       - name: checkout code repository
         uses: actions/checkout@v4
-        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        if: needs.changesetcheck.outputs.CHANGESETS == 'found'
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@v4
-        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        if: needs.changesetcheck.outputs.CHANGESETS == 'found'
         with:
           version: 9
       - uses: actions/setup-node@v4
-        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        if: needs.changesetcheck.outputs.CHANGESETS == 'found'
         with:
           node-version: 22
           cache: "pnpm"
       - name: Install
-        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        if: needs.changesetcheck.outputs.CHANGESETS == 'found'
         run: pnpm install --no-frozen-lockfile
       - name: Apply and commit changesets
         if: needs.changesetcheck.outputs.CHANGESETS == 'found'
