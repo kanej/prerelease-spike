@@ -10,7 +10,7 @@ jobs:
   changesetcheck:
     runs-on: ubuntu-latest
     outputs:
-      changesets: ${{ steps.changesetcheck.outputs.changesets }}
+      CHANGESETS: ${{ steps.changesetcheck.outputs.CHANGESETS }}
     steps:
       - name: checkout code repository
         uses: actions/checkout@v4
@@ -35,10 +35,10 @@ jobs:
           cat changes.json | grep "\"releases\": \[\],"
           if [ $? -eq 0 ]; then
             echo "No changeset found"
-            echo "changesets=true" >> "$GITHUB_OUTPUT"
+            echo "CHANGESETS=notfound" >> "$GITHUB_OUTPUT"
           else
             echo "Changesets found"
-            echo "changesets=false" >> "$GITHUB_OUTPUT"
+            echo "CHANGESETS=found" >> "$GITHUB_OUTPUT"
           fi
 
   release:
@@ -47,5 +47,5 @@ jobs:
     steps:
       - name: Release check
         env:
-          CHANGESETS: ${{needs.changesetcheck.outputs.changesets}}
+          CHANGESETS: ${{needs.changesetcheck.outputs.CHANGESETS}}
         run: echo "$CHANGESETS"
