@@ -43,6 +43,9 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: changesetcheck
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Stop on no changesets
         if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
@@ -77,3 +80,11 @@ jobs:
         run: |
           echo "Changesets found. Starting release."
           pnpm changeset version
+          git add .
+          git commit -m "chore: release"
+      - name: Publish
+        if: needs.changesetcheck.outputs.CHANGESETS == 'found'
+        run: pnpm publish -r --no-git-checks --tag next --access public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
