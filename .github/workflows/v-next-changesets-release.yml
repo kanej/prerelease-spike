@@ -35,14 +35,10 @@ jobs:
           pnpm changeset status --output=changes.json
           cat changes.json | grep "\"releases\": \[\],"
           if [ $? -eq 0 ]; then
-            echo "No changeset found"
             echo "changesets=notfound" >> "$GITHUB_OUTPUT"
           else
-            echo "Changesets found"
             echo "changesets=found" >> "$GITHUB_OUTPUT"
           fi
-      - name: Release check
-        run: echo "${{steps.changesetcheck.outputs.changesets}}"
 
   release:
     runs-on: ubuntu-latest
@@ -52,3 +48,13 @@ jobs:
         env:
           CHANGESETS: ${{needs.changesetcheck.outputs.CHANGESETS}}
         run: echo "$CHANGESETS"
+      - name: Check command status
+        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        run: |
+          echo "No changesets found. Exiting the workflow."
+          exit 0
+
+      - name: Subsequent step
+        if: needs.changesetcheck.outputs.CHANGESETS == 'found'
+        run: |
+          echo "Changesets found. Starting release."
