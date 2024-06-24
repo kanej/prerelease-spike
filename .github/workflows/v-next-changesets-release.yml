@@ -40,11 +40,12 @@ jobs:
             echo "Changesets found"
             echo "changesets=false" >> "$GITHUB_OUTPUT"
           fi
-      
+
   release:
     runs-on: ubuntu-latest
     needs: changeset-check
     steps:
-      - env:
-        CHANGESETS: ${{needs.changeset-check.outputs.changesets}}
-      run: echo "$CHANGESETS"
+      - name: Release check
+        env:
+          CHANGESETS: ${{needs.changeset-check.outputs.changesets}}
+        run: echo "$CHANGESETS"
