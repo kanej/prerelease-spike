@@ -7,7 +7,7 @@ env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
 jobs:
-  changeset-check:
+  changesetcheck:
     runs-on: ubuntu-latest
     outputs:
       changesets: ${{ steps.changesetcheck.outputs.changesets }}
@@ -43,9 +43,9 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    needs: changeset-check
+    needs: changesetcheck
     steps:
       - name: Release check
         env:
-          CHANGESETS: ${{needs.changeset-check.outputs.changesets}}
+          CHANGESETS: ${{needs.changesetcheck.outputs.changesets}}
         run: echo "$CHANGESETS"
