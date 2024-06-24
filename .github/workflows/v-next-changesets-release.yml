@@ -48,13 +48,14 @@ jobs:
         env:
           CHANGESETS: ${{needs.changesetcheck.outputs.CHANGESETS}}
         run: echo "$CHANGESETS"
-      - name: Check command status
+      - name: Stop on no changesets
         if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
         run: |
           echo "No changesets found. Exiting the workflow."
           exit 0
 
-      - name: Subsequent step
+      - name: Apply and commit changesets
         if: needs.changesetcheck.outputs.CHANGESETS == 'found'
         run: |
           echo "Changesets found. Starting release."
+          pnpm changeset version
