@@ -35,15 +35,13 @@ jobs:
           cat changes.json | grep "\"releases\": \[\],"
           if [ $? -eq 0 ]; then
             echo "No changeset found"
-            echo "CHANGESETS=notfound" >> "$GITHUB_OUTPUT"
+            echo "changesets=notfound" >> "$GITHUB_OUTPUT"
           else
             echo "Changesets found"
-            echo "CHANGESETS=found" >> "$GITHUB_OUTPUT"
+            echo "changesets=found" >> "$GITHUB_OUTPUT"
           fi
       - name: Release check
-        env:
-          CHANGESETS: ${{steps.changesetcheck.outputs.CHANGESETS}}
-        run: echo "$CHANGESETS"
+        run: echo "${{steps.changesetcheck.outputs.changesets}}"
 
   release:
     runs-on: ubuntu-latest
