@@ -44,16 +44,34 @@ jobs:
     runs-on: ubuntu-latest
     needs: changesetcheck
     steps:
-      - name: Release check
-        env:
-          CHANGESETS: ${{needs.changesetcheck.outputs.CHANGESETS}}
-        run: echo "$CHANGESETS"
       - name: Stop on no changesets
         if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
         run: |
           echo "No changesets found. Exiting the workflow."
           exit 0
 
+      - name: checkout code repository
+        uses: actions/checkout@v4
+        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        with:
+          fetch-depth: 0
+      - name: checkout code repository
+        uses: actions/checkout@v4
+        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        with:
+          node-version: 22
+          cache: "pnpm"
+      - name: Install
+        if: needs.changesetcheck.outputs.CHANGESETS == 'notfound'
+        run: pnpm install --no-frozen-lockfile
       - name: Apply and commit changesets
         if: needs.changesetcheck.outputs.CHANGESETS == 'found'
         run: |
