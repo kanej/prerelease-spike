@@ -33,7 +33,7 @@ jobs:
         id: changesetcheck
         run: |
           pnpm changeset status --output=changes.json
-          cat changes.json | grep "\"releases\": \[\]," || true
+          (cat changes.json | grep "\"releases\": \[\],")
           if [ $? -eq 0 ]; then
             echo "changesets=notfound" >> "$GITHUB_OUTPUT"
           else
